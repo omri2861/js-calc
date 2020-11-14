@@ -1,0 +1,7 @@
+# The .gitignore file for my course work :)
+
+# Visual Studio Code files
+.vscode/
+
+# Bootstrap source which I want locally
+bootstrap/
