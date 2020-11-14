@@ -14,3 +14,8 @@ body {
   margin-bottom: 5px;
   width: 100%;
 }
+
+#calc-screen {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
