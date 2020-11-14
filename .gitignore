@@ -3,7 +3,8 @@
 # Visual Studio Code files
 .vscode/
 
-# Bootstrap source which I want locally
+# Packages which I want locally
 bootstrap/
 bootstrap-4.4.1-dist.zip
+jquery-3.5.1.min.js
 
