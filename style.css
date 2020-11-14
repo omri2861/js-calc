@@ -9,9 +9,8 @@ body {
     max-width: 400px;
 }
 
-.calc-button { 
-    padding-right: 2rem;
-    padding-left: 2rem;
+.calc-button {
     margin-top: 5px;
     margin-bottom: 5px;
+    width: 100%;
 }
