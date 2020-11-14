@@ -5,22 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript Calculator</title>
 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+
+    <!-- My Style Sheet -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Hello, World!</h1>
 
-    <div class="calculator">
+    <div class="container calculator">
       <div class="calc-buttons">
-        <button class="calc-btn">9</button>
-        <button class="calc-btn">8</button>
-        <button class="calc-btn">7</button>
-        <button class="calc-btn">6</button>
-        <button class="calc-btn">5</button>
-        <button class="calc-btn">4</button>
-        <button class="calc-btn">3</button>
-        <button class="calc-btn">2</button>
-        <button class="calc-btn">1</button>
+        <div class="row">
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">9</button>
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">8</button>
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">7</button>
+        </div>
+        <div class = "row">
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">6</button>
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">5</button>
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">4</button>
+        </div>
+        <div class="row">
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">3</button>
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">2</button>
+          <button type="button" class="col-3 btn btn-outline-dark calc-button">1</button>
+        </div>
       </div>
     </div>
   </body>
