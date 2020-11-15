@@ -76,16 +76,18 @@ function evaluateExpression(expression) {
     }
   }
 
-  for (let i = 1; i < elements.length - 1; i++) {
-    if (isElementOperator(elements[i])) {
-      let operator = getOperatorBySymbol(elements[i]);
+  while (elements.length > 1) {
+    for (let i = 1; i < elements.length - 1; i++) {
+      if (isElementOperator(elements[i])) {
+        let operator = getOperatorBySymbol(elements[i]);
 
-      let result = operator.calculate(elements[i - 1], elements[i + 1]);
+        let result = operator.calculate(elements[i - 1], elements[i + 1]);
 
-      elements.splice(i - 1, 3, result);
+        elements.splice(i - 1, 3, result);
+      }
     }
   }
-  return elements;
+  return elements[0];
 }
 
 $(".calc-button").on("click", calculatorPress);
