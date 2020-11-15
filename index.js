@@ -7,6 +7,7 @@
 const OPERATORS = ["+", "-", "%", "×", "÷"];
 const DIGITS = "1234567890";
 var currentNumber = "";
+var expression = "";
 
 function calculatorPress(button) {
   let command = button.target.textContent;
@@ -16,8 +17,10 @@ function calculatorPress(button) {
     } else {
       currentNumber += command;
     }
-  } else {
+  } else if (OPERATORS.includes(command)) {
+    expression += currentNumber + command;
     currentNumber = "0";
+    $("#expression").text(expression);
   }
 
   $("#calc-screen").text(currentNumber);
