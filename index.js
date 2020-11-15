@@ -23,7 +23,9 @@ function calculatorPress(button) {
     currentNumber = "0";
   } else if (command === "=") {
     expression += currentNumber;
-    console.log(evaluateExpression(expression));
+    let result = evaluateExpression(expression).toString();
+    expression = result;
+    currentNumber = result;
   } else if (command === CLEAR_COMMAND) {
       currentNumber = "";
       expression = "";
