@@ -22,13 +22,17 @@ function calculatorPress(button) {
     expression += currentNumber + " " + command + " ";
     currentNumber = "0";
   } else if (command === "=") {
-    expression += currentNumber;
+    if (expression.length !== 0 && expression.includes(" ")) {
+      // This statement is here to protect the edge case when the result from         * the previous
+      // calculation is placed as the expression, and the user presses '=' again
+      expression += currentNumber;
+    }
     let result = evaluateExpression(expression).toString();
     expression = result;
     currentNumber = result;
   } else if (command === CLEAR_COMMAND) {
-      currentNumber = "";
-      expression = "";
+    currentNumber = "";
+    expression = "";
   }
 
   $("#expression").text(expression);
