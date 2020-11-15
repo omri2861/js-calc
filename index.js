@@ -4,12 +4,12 @@
  * Enjoy !
  */
 
-const operators = ['+', '-', '%', '×', '÷'];
-const digits = "1234567890";
+const OPERATORS = ['+', '-', '%', '×', '÷'];
+const DIGITS = "1234567890";
 
 function calculatorPress(button) {
     let command = button.target.textContent;
-    console.log(digits.includes(command));
+    console.log(DIGITS.includes(command));
 }
 
 $(".calc-button").on("click", calculatorPress);
