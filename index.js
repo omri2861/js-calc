@@ -50,11 +50,10 @@ var operators = [
 function isElementOperator(element) {
   for (let i = 0; i < operators.length; i++) {
     if (element === operators[i].symbol) {
-      console.log("Found element: " + element);
-      console.log(operators[i]);
       return true;
     }
   }
+
   return false;
 }
 
@@ -69,20 +68,24 @@ function getOperatorBySymbol(symbol) {
 
 function evaluateExpression(expression) {
   let elements = expression.split(" ");
-  let evaluated = [];
-  for (let i = 1; i < elements.length - 1; i++) {
-    console.log("Checking element: " + elements[i]);
-    if (isElementOperator(elements[i])) {
-      let operator = getOperatorBySymbol(elements[i]);
-      evaluated.push(
-        operator.calculate(
-          parseFloat(elements[i - 1]),
-          parseFloat(elements[i + 1])
-        )
-      );
+  // Tokenize the expression:
+  for (let i = 0; i < elements.length; i++) {
+    let number = parseFloat(elements[i]);
+    if (!isNaN(number)) {
+      elements[i] = number;
     }
   }
-  return evaluated;
+
+  for (let i = 1; i < elements.length - 1; i++) {
+    if (isElementOperator(elements[i])) {
+      let operator = getOperatorBySymbol(elements[i]);
+
+      let result = operator.calculate(elements[i - 1], elements[i + 1]);
+
+      elements.splice(i - 1, 3, result);
+    }
+  }
+  return elements;
 }
 
 $(".calc-button").on("click", calculatorPress);
