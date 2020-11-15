@@ -21,21 +21,20 @@ function calculatorPress(button) {
     expression += currentNumber + " " + command + " ";
     currentNumber = "0";
     $("#expression").text(expression);
-  }
-  else if (command === "=") {
-      expression += currentNumber;
-      $("#expression").text(expression);
-      console.log(evaluateExpression(expression));
+  } else if (command === "=") {
+    expression += currentNumber;
+    $("#expression").text(expression);
+    console.log(evaluateExpression(expression));
   }
 
   $("#calc-screen").text(currentNumber);
 }
 
 class BinaryOperator {
-  constructor(operator, level, evaluate) {
-    this.operator = operator;
+  constructor(symbol, level, calculate) {
+    this.symbol = symbol;
     this.level = level;
-    this.evaluate = evaluate;
+    this.calculate = calculate;
   }
 }
 
@@ -48,13 +47,42 @@ var operators = [
   }),
 ];
 
-function evaluateExpression(expression) { 
-    elements = expression.split(" ");
-    evaluated = [];
-    for (i = 1; i < elements.length; i++) {
-        console.log(i);
+function isElementOperator(element) {
+  for (let i = 0; i < operators.length; i++) {
+    if (element === operators[i].symbol) {
+      console.log("Found element: " + element);
+      console.log(operators[i]);
+      return true;
     }
-    return elements.length;
+  }
+  return false;
+}
+
+function getOperatorBySymbol(symbol) {
+  for (let i = 0; i < operators.length; i++) {
+    if (symbol === operators[i].symbol) {
+      return operators[i];
+    }
+  }
+  throw "Couldn't find operator: " + symbol;
+}
+
+function evaluateExpression(expression) {
+  let elements = expression.split(" ");
+  let evaluated = [];
+  for (let i = 1; i < elements.length - 1; i++) {
+    console.log("Checking element: " + elements[i]);
+    if (isElementOperator(elements[i])) {
+      let operator = getOperatorBySymbol(elements[i]);
+      evaluated.push(
+        operator.calculate(
+          parseFloat(elements[i - 1]),
+          parseFloat(elements[i + 1])
+        )
+      );
+    }
+  }
+  return evaluated;
 }
 
 $(".calc-button").on("click", calculatorPress);
