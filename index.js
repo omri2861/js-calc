@@ -6,6 +6,7 @@
 
 const OPERATORS = ["+", "-", "%", "×", "÷"];
 const DIGITS = "1234567890";
+const CLEAR_COMMAND = "AC";
 var currentNumber = "";
 var expression = "";
 
@@ -20,13 +21,15 @@ function calculatorPress(button) {
   } else if (OPERATORS.includes(command)) {
     expression += currentNumber + " " + command + " ";
     currentNumber = "0";
-    $("#expression").text(expression);
   } else if (command === "=") {
     expression += currentNumber;
-    $("#expression").text(expression);
     console.log(evaluateExpression(expression));
+  } else if (command === CLEAR_COMMAND) {
+      currentNumber = "";
+      expression = "";
   }
 
+  $("#expression").text(expression);
   $("#calc-screen").text(currentNumber);
 }
 
