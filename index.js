@@ -4,12 +4,23 @@
  * Enjoy !
  */
 
-const OPERATORS = ['+', '-', '%', '×', '÷'];
+const OPERATORS = ["+", "-", "%", "×", "÷"];
 const DIGITS = "1234567890";
+var currentNumber = "";
 
 function calculatorPress(button) {
-    let command = button.target.textContent;
-    console.log(DIGITS.includes(command));
+  let command = button.target.textContent;
+  if (DIGITS.includes(command)) {
+    if (currentNumber === "0") {
+      currentNumber = command;
+    } else {
+      currentNumber += command;
+    }
+  } else {
+    currentNumber = "0";
+  }
+
+  $("#calc-screen").text(currentNumber);
 }
 
 $(".calc-button").on("click", calculatorPress);
